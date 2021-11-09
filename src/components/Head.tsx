@@ -1,4 +1,6 @@
-import { useHead } from "../../hooks/useHead";
+import { useHead } from "../hooks/useHead";
+
+import '../styles/components/controls.scss'
 
 export default function Head() {
   const {
@@ -12,13 +14,19 @@ export default function Head() {
   } = useHead();
 
   return (
-    <div>
-      <h1>Cabeça</h1>
+    <div className="controlContent">
+      <h2>Cabeça</h2>
       <p> Inclinação: {inclination}</p>
       <button onClick={decraseI} >+</button>
       <button onClick={incraseI} >-</button>
 
       <p> Rotação: {rotation}</p>
+      {!rotateHead && (
+        <>
+          <span>Só é possivel alterar a rotação quando a inclinação estiver para Baixo</span>
+          <br />
+        </>
+      )}
       <button disabled={!rotateHead} onClick={incraseR} >+</button>
       <button disabled={!rotateHead} onClick={decraseR} >-</button>
     </div>

@@ -1,4 +1,6 @@
-import { useRightArm } from "../../hooks/useRightArm";
+import { useRightArm } from "../hooks/useRightArm";
+
+import '../styles/components/controls.scss'
 
 export default function RightArm() {
   const {
@@ -11,13 +13,20 @@ export default function RightArm() {
     rightDecraseP } = useRightArm();
 
   return (
-    <div>
-      <h1>Braço Direito</h1>
+    <div className="controlContent">
+      <h2>Braço Direito</h2>
       <p> Cotovelo: {rightElbow}</p>
       <button onClick={rightContractE} >+</button>
       <button onClick={rightRelaxE} >-</button>
 
       <p> Pulso: {pulse}</p>
+
+      {!movePulse && (
+        <>
+          <span>Só é possivel mover o pulso quando o cotovelo estiver fortemente contraido</span>
+          <br />
+        </>
+      )}
       <button disabled={!movePulse} onClick={rightIncraseP} >+</button>
       <button disabled={!movePulse} onClick={rightDecraseP} >-</button>
     </div>
